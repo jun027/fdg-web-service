@@ -1,0 +1,98 @@
+variables:
+  DOCKER_TLS_CERTDIR: '' # 禁用 TLS 以使用 HTTP 連接
+
+services:
+  - name: docker:dind
+    command: ['--insecure-registry=ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050']
+
+stages:
+  - test
+  - build
+  - publish
+
+# 測試階段
+run-tests:
+  stage: test
+  tags:
+    - hcj-fdg-runner
+  script:
+    - echo "Running tests..."
+
+# build for develop branch
+build-docker-image-dev:
+  stage: build
+  only:
+    - develop
+  tags:
+    - hcj-fdg-runner
+  needs:
+    - run-tests
+  script:
+    - echo "Building Docker image for dev environment"
+    - docker build --build-arg MODULES_TOKEN=$MODULES_TOKEN --build-arg NEXT_PUBLIC_BASE_URL=$DEV_BASE_URL --build-arg NEXT_PUBLIC_GOOGLE_REDIRECT_URI=$DEV_GOOGLE_REDIRECT_URL --build-arg NEXT_PUBLIC_GOOGLE_CLIENT_ID=$DEV_GOOGLE_CLIENT_ID -t ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:$CI_PIPELINE_IID .
+    - docker tag ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:$CI_PIPELINE_IID ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:dev-latest
+
+# build for main branch (production)
+build-docker-image-prod:
+  stage: build
+  only:
+    - main
+  tags:
+    - hcj-fdg-runner
+  needs:
+    - run-tests
+  script:
+    - echo "Building Docker image for prod environment"
+    - echo "NEXT_PUBLIC_BASE_URL： $PROD_BASE_URL"
+    - docker build --build-arg MODULES_TOKEN=$MODULES_TOKEN --build-arg NEXT_PUBLIC_BASE_URL=$PROD_BASE_URL --build-arg NEXT_PUBLIC_GOOGLE_REDIRECT_URI=$PROD_GOOGLE_REDIRECT_URL --build-arg NEXT_PUBLIC_GOOGLE_CLIENT_ID=$PROD_GOOGLE_CLIENT_ID -t ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:$CI_PIPELINE_IID .
+    - docker tag ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:$CI_PIPELINE_IID ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:prod-latest
+
+# publish for develop
+push-to-registry-dev:
+  stage: publish
+  only:
+    - develop
+  tags:
+    - hcj-fdg-runner
+  needs:
+    - build-docker-image-dev
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD http://ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050
+    # 安裝 curl
+    - apk add --no-cache curl
+  script:
+    - echo "Pushing to registry..."
+    - docker push ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:$CI_PIPELINE_IID
+    - docker push ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:dev-latest
+    - echo "Triggering deployment project pipeline..."
+    - |
+      curl -X POST \
+      -F token=$DEPLOY_TRIGGER_TOKEN \
+      -F ref=$CI_COMMIT_REF_NAME \
+      -F "variables[SERVICE]=web-services" \
+      http://ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com/api/v4/projects/$DEPLOY_PROJECT_ID/trigger/pipeline
+
+# publish for production
+push-to-registry-prod:
+  stage: publish
+  only:
+    - main
+  tags:
+    - hcj-fdg-runner
+  needs:
+    - build-docker-image-prod
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD http://ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050
+    # 安裝 curl
+    - apk add --no-cache curl
+  script:
+    - echo "Pushing to registry..."
+    - docker push ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:$CI_PIPELINE_IID
+    - docker push ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com:5050/gogogo/hcj-fdg/hcj-fdg-web-service:prod-latest
+    - echo "Triggering deployment project pipeline..."
+    - |
+      curl -X POST \
+      -F token=$DEPLOY_TRIGGER_TOKEN \
+      -F ref=$CI_COMMIT_REF_NAME \
+      -F "variables[SERVICE]=web-services" \
+      http://ec2-15-168-3-237.ap-northeast-3.compute.amazonaws.com/api/v4/projects/$DEPLOY_PROJECT_ID/trigger/pipeline

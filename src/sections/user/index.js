@@ -1,0 +1,7 @@
+export { default as ProfileView } from './profile-view'
+export { default as DonateRecordView } from './donate-record-view'
+export { default as DepositRecordView } from './deposit-record-view'
+export { default as MeritCardView } from './merit-card-view'
+export { default as FortuneStickView } from './fortune-stick-view'
+export { default as DivinationBlocksView } from './divination-blocks-view'
+export { default as WalletView } from './wallet-view'

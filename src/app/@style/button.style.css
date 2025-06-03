@@ -1,0 +1,17 @@
+@layer components {
+  .c-btn-basic {
+    @apply block text-center rounded-4 p-4 mobile-bold-h3;
+  }
+
+  .c-header-button {
+    @apply cursor-pointer hover:bg-[#6b4319] duration-200;
+  }
+
+  .c-btn-disabled {
+    @apply border-gray-300 cursor-not-allowed text-gray-300 hover:border-gray-300 hover:text-gray-300;
+  }
+
+  .c-btn-prayer {
+    @apply flex gap-x-3 items-center py-3 px-6 rounded-full border-white border-1 hover:bg-white/25 duration-200;
+  }
+}

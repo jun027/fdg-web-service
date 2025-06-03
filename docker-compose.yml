@@ -1,0 +1,16 @@
+services:
+  service:
+    image: ${IMAGE_NAME}
+    environment:
+      - Environment=${Environment}
+      - Port=${Port}
+      - BASE_URL=${BASE_URL}
+      - TZ=Asia/Shanghai
+    ports:
+      - ${APP_PORT}:8000
+    networks:
+      - pulian-network
+    restart: always
+networks:
+  pulian-network:
+    external: true

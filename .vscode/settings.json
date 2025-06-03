@@ -1,0 +1,31 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "i18n-ally.localesPaths": ["src/locales", "src/locales/langs"],
+  "cSpell.words": [
+    "clsx",
+    "fontawesome",
+    "fortawesome",
+    "gsap",
+    "Guangming",
+    "heroicons",
+    "hookform",
+    "immer",
+    "noto",
+    "pulian",
+    "qrcode",
+    "QWERTYUIPASDFGHJKLZXCVBNM",
+    "shen",
+    "Signup",
+    "Swiper",
+<<<<<<< HEAD
+    "zustand"
+=======
+    "uuidv"
+>>>>>>> feature/20241115_Jun_Create-lightintlamp
+  ]
+}

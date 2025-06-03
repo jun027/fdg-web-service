@@ -1,0 +1,29 @@
+@layer components {
+  .btn-solid {
+    @apply text-center bg-primary-800 px-4 py-2 rounded-[4px] text-white desktop-regular-p lg:p-4 lg:desktop-regular-h6;
+  }
+
+  .btn-outline {
+    @apply text-center border border-primary-800 bg-transparent px-4 py-2 rounded-[4px] text-primary-800 desktop-regular-p lg:p-4 lg:desktop-regular-h6;
+  }
+
+  .field-label {
+    @apply text-dark-900 desktop-regular-h6;
+  }
+
+  .rhf-text-field.field-disabled .MuiOutlinedInput-root {
+    @apply bg-gray-200 text-gray-500;
+  }
+
+  .rhf-text-field .MuiOutlinedInput-root {
+    @apply rounded-[5px] desktop-regular-p text-dark-900 bg-white;
+
+    .MuiOutlinedInput-input {
+      @apply py-3 px-4;
+    }
+
+    &.Mui-focused fieldset {
+      @apply border-dark-500 border-1;
+    }
+  }
+}

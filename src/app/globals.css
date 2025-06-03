@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900');
+
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+@import './@style/field.style.css';
+@import './@style/button.style.css';
+@import './@style/announcement-detail.style.css';
+
+@import 'tailwindcss/utilities';
+
+@layer utilities {
+  /* desktop light */
+  .desktop-light-h1 {
+    @apply text-48 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .desktop-light-h2 {
+    @apply text-36 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .desktop-light-h3 {
+    @apply text-32 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .desktop-light-h4 {
+    @apply text-24 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .desktop-light-h5 {
+    @apply text-20 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .desktop-light-h6 {
+    @apply text-16 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .desktop-light-p {
+    @apply text-14 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  /* desktop regular */
+  .desktop-regular-h1 {
+    @apply text-48 font-noto-sans-tc font-normal leading-normal tracking-normal;
+  }
+
+  .desktop-regular-h2 {
+    @apply text-36 font-noto-sans-tc font-normal leading-normal tracking-normal;
+  }
+
+  .desktop-regular-h3 {
+    @apply text-32 font-noto-sans-tc font-normal leading-normal tracking-normal;
+  }
+
+  .desktop-regular-h4 {
+    @apply text-24 font-noto-sans-tc font-normal leading-normal tracking-normal;
+  }
+
+  .desktop-regular-h5 {
+    @apply text-20 font-noto-sans-tc font-normal leading-normal tracking-[1px];
+  }
+
+  .desktop-regular-h6 {
+    @apply text-16 font-noto-sans-tc font-normal leading-normal tracking-normal;
+  }
+
+  .desktop-regular-p {
+    @apply text-14 font-noto-sans-tc font-normal leading-normal tracking-normal;
+  }
+
+  /* desktop medium */
+  .desktop-medium-h1 {
+    @apply text-48 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .desktop-medium-h2 {
+    @apply text-36 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .desktop-medium-h3 {
+    @apply text-32 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .desktop-medium-h4 {
+    @apply text-24 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .desktop-medium-h5 {
+    @apply text-20 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .desktop-medium-h6 {
+    @apply text-16 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .desktop-medium-p {
+    @apply text-14 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  /* desktop bold */
+  .desktop-bold-h1 {
+    @apply text-48 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-h2 {
+    @apply text-36 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-h3 {
+    @apply text-32 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-h4 {
+    @apply text-24 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-h5 {
+    @apply text-20 font-noto-sans-tc font-bold leading-normal tracking-[1px];
+  }
+
+  .desktop-bold-h6 {
+    @apply text-16 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-p {
+    @apply text-14 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-number-1 {
+    @apply text-14 font-noto-serif-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-number-2 {
+    @apply text-24 font-noto-serif-tc font-bold leading-normal tracking-normal;
+  }
+
+  .desktop-bold-number-3 {
+    @apply text-64 font-noto-serif-tc font-bold leading-normal tracking-[1.92px];
+  }
+
+  /* mobile light */
+  .mobile-light-h1 {
+    @apply text-24 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .mobile-light-h2 {
+    @apply text-20 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .mobile-light-h3 {
+    @apply text-16 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .mobile-light-h4 {
+    @apply text-14 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  .mobile-light-h5 {
+    @apply text-12 font-noto-sans-tc font-light leading-normal tracking-normal;
+  }
+
+  /* mobile regular */
+  .mobile-regular-h1 {
+    @apply text-24 font-noto-sans-tc font-normal leading-normal tracking-[2.4px];
+  }
+
+  .mobile-regular-h2 {
+    @apply text-20 font-noto-sans-tc font-normal leading-normal tracking-[2px];
+  }
+
+  .mobile-regular-h3 {
+    @apply text-16 font-noto-sans-tc font-normal leading-normal tracking-[2.4px];
+  }
+
+  .mobile-regular-h4 {
+    @apply text-14 font-noto-sans-tc font-normal leading-normal tracking-[2.1px];
+  }
+
+  .mobile-regular-h5 {
+    @apply text-12 font-noto-sans-tc font-normal leading-normal tracking-[1.8px];
+  }
+
+  .mobile-regular-number-1 {
+    @apply text-24 font-noto-serif-tc font-bold leading-normal tracking-[2.4px];
+  }
+
+  /* mobile medium */
+  .mobile-medium-h1 {
+    @apply text-24 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .mobile-medium-h2 {
+    @apply text-20 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .mobile-medium-h3 {
+    @apply text-16 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .mobile-medium-h4 {
+    @apply text-14 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  .mobile-medium-h5 {
+    @apply text-12 font-noto-sans-tc font-medium leading-normal tracking-normal;
+  }
+
+  /* mobile bold */
+  .mobile-bold-h1 {
+    @apply text-24 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .mobile-bold-h2 {
+    @apply text-20 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .mobile-bold-h3 {
+    @apply text-16 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .mobile-bold-h4 {
+    @apply text-14 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .mobile-bold-h5 {
+    @apply text-12 font-noto-sans-tc font-bold leading-normal tracking-normal;
+  }
+
+  .mobile-bold-number-1 {
+    @apply text-24 font-noto-serif-tc font-bold leading-normal tracking-normal;
+  }
+}
+
+.swiper-next-button,
+.swiper-prev-button {
+  @apply hover:opacity-60 duration-200;
+}
+
+.swiper-button-disabled {
+  @apply opacity-30 hover:opacity-30;
+}
+
+.btn-hover {
+  @apply hover:opacity-80 duration-200;
+}
+
+.btn-underline-hover {
+  @apply after:w-full after:h-[1px] after:bg-white after:block after:relative after:bottom-0 after:left-0 after:scale-x-0 after:scale-y-100 hover:after:scale-x-100 after:duration-200;
+}

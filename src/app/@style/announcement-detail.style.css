@@ -1,0 +1,11 @@
+@layer components {
+  .c-announcement-prev-button,
+  .c-announcement-next-button {
+    @apply text-primary-700 desktop-regular-h6 flex items-center gap-x-1 hover:bg-primary-700/10 duration-150 rounded-4 py-1;
+  }
+
+  .c-announcement-prev-button-disabled,
+  .c-announcement-next-button-disabled {
+    @apply text-dark-500/50 cursor-not-allowed hover:bg-transparent;
+  }
+}
